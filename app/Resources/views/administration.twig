@@ -1,0 +1,83 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="header col-xs-12">
+
+        </div>
+        <div id="controls" class="col-xs-3">
+            <button id="getBooks" class="col-xs-12">Consulter les livres</button>
+            <button id="form_add_Book" class="col-xs-12">Ajouter un livre</button>
+            <button id="form_add_Exemplaire" class="col-xs-12">Ajouter un Exemplaire</button>
+            <button class="col-xs-12">Editer un Livre</button>
+            <button class="col-xs-12">Editer un Exemplaire</button>
+            <button class="col-xs-12">Administrer les auteurs</button>
+            <button class="col-xs-12">Administrer les editeurs</button>
+        </div>
+        <div id="common-result" class="col-xs-9">
+            {#zone liste des livres#}
+            <div id="list" class="col-xs-12">
+                
+            </div>
+            {#zone formulaire d'ajout et edition des livres#}
+            <div id="form_book" class="col-xs-12">
+                <form class="col-xs-6 col-xs-offset-3">
+                    <label class="col-xs-12 text-center">Gestion du livre : </label>
+                    <img class="col-xs-2 col-xs-offset-5" src="" alt="Image du livre"/>
+                    <label class="col-xs-12">Titre : </label>
+                    <input type="text" name="titre" class="col-xs-12"/>
+                    <label class="col-xs-12">ISBN : </label>
+                    <input type="text" name="isbn" class="col-xs-12"/>
+                    <label class="col-xs-12">Auteur : </label>
+                    <input type="text" name="auteur" class="col-xs-12"/>
+                    <label class="col-xs-12">Editeur : </label>
+                    <input type="text" name="editeur" class="col-xs-12"/>
+                    <label class="col-xs-12">Résumé : </label>
+                    <textarea name="resume" class="col-xs-12"></textarea>
+                    <input type="submit" value="Mettre a jour" class="col-xs-12"/>
+                </form>
+            </div>
+            {#zone liste des exemplaires#}
+            <div id="form_exemplaire" class="col-xs-10 col-xs-offset-1">
+                <p>Exemplaires du livre : <label class="titre"></label></p>
+                <table id="copies" class="col-xs-12 copies">
+                    <tr>
+                        <th class="col-xs-1">id</th>
+                        <th class="col-xs-3">etat</th>
+                        <th class="col-xs-3">status</th>
+                        <th class="col-xs-3">prix</th>
+                        <th class="col-xs-2"></th>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-1">
+                            <label class="col-xs-12">
+
+                            </label>
+                        </td>
+                        <td class="col-xs-3">
+                            <select list="etats" class="col-xs-12" name="etat">
+                            </select>
+                        </td>
+                        <td class="col-xs-3">
+                            <select class="col-xs-12" name="status">
+
+                            </select>
+                        </td>
+                        <td class="col-xs-3">
+                            <input class="col-xs-12" type="number" name="prix" class="col-xs-12"/>
+                        </td>
+                        <td class="col-xs-2">
+                            <button class="col-xs-12">supprimer</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {#zone suivante#}
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+    <script type="text/javascript" src="{{asset("/script/rendering_table_copies.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/script/administrating_requests.js")}}"></script>
+    <script type="text/javascript" src="{{asset("/script/admin_init.js")}}"></script>
+{% endblock %}
